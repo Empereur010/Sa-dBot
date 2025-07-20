@@ -30,7 +30,7 @@ module.exports = {
 ☞${minutes} 𝐌𝐢𝐧𝐮𝐭𝐞𝐬🍁, 
 ☞${seconds} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬🍁`;
       
-      api.sendMessage(`🫩 | 𝐓𝐈𝐌𝐄 𝐂𝐎𝐍𝐐𝐔𝐄𝐑𝐈𝐍𝐆 𝐖𝐎𝐑𝐋𝐃\n${uptimeString}`, event.threadID);
+      api.sendMessage(`🍀 | 𝐓𝐈𝐌𝐄 𝐂𝐎𝐍𝐐𝐔𝐄𝐑𝐈𝐍𝐆 𝐖𝐎𝐑𝐋𝐃\n${uptimeString}`, event.threadID);
     } catch (error) {
       console.error(error);
       api.sendMessage("An error occurred while retrieving data.", event.threadID);
