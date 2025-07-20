@@ -46,7 +46,7 @@ module.exports = {
 			successGlobal: "Changed prefix of system bot to: %1",
 			successThisThread: "Changed prefix in your box chat to: %1",
 			myPrefix: "•𝐄𝐫𝐞𝐧 🫩  \__________________\
- 𝐌𝐘 𝐏𝐑𝐄𝐅𝐈𝐗 ➪  ✍︎%1✍︎\n __________________\n ➪ 𝚙𝚘𝚞𝚛 𝚟𝚘𝚒𝚛 𝚕𝚊 𝚕𝚒𝚜𝚝𝚎 𝚍𝚎 𝚌𝚖𝚍 é𝚌𝚛𝚒𝚟𝚎𝚣 ☞︎︎︎ +𝚑𝚎𝚕𝚙\n\n___________________"
+ 𝐌𝐘 𝐏𝐑𝐄𝐅𝐈𝐗 ➪  ✍︎%1✍︎\n __________________\n ➪ 𝚙𝚘𝚞𝚛 𝚟𝚘𝚒𝚛 𝚕𝚊 𝚕𝚒𝚜𝚝𝚎 𝚍𝚎 𝚌𝚖𝚍 é𝚌𝚛𝚒𝚟𝚎𝚣 ☞︎︎︎ •𝚑𝚎𝚕𝚙\n\n___________________"
 		}
 	},
 
