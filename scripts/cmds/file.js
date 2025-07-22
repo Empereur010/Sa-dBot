@@ -1,46 +1,35 @@
-const express = require('express');
 const fs = require('fs');
-const path = require('path');
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+module.exports = {
+  config: {
+    name: "file",
+    version: "1.0",
+    author: "OtinXShiva",
+    countDown: 5,
+    role: 0,
+    shortDescription: "Send bot script",
+    longDescription: "Send bot specified file ",
+    category: "owner",
+    guide: "{pn} file name. Ex: .{pn} filename"
+  },
 
-// Middleware pour parser les requêtes JSON
-app.use(express.json());
+  onStart: async function ({ message, args, api, event }) {
+    const permission = ["61566369676527"];
+    if (!permission.includes(event.senderID)) {
+      return api.sendMessage("𝐁𝐚𝐤𝐚 𝐬𝐞𝐮𝐥 𝐦𝐨𝐧 𝐛𝐨𝐬𝐬 𝐩𝐞𝐮𝐭 𝐮𝐭𝐢𝐥𝐢𝐬𝐞́ 𝐥𝐚 𝐟𝐨𝐧𝐜𝐭𝐢𝐨𝐧 ", event.threadID, event.messageID);
+    }
+    
+    const fileName = args[0];
+    if (!fileName) {
+      return api.sendMessage("𝖡𝖺𝗅𝖺𝗇𝖼𝖾 𝗅𝖾 𝗇𝗈𝗆 𝖽𝗎 𝖿𝗂𝖼𝗁𝗂𝖾𝗋.", event.threadID, event.messageID);
+    }
 
-// Autorisation (ID admin)
-const OWNER_ID = "61566369676527";
+    const filePath = __dirname + `/${fileName}.js`;
+    if (!fs.existsSync(filePath)) {
+      return api.sendMessage(`File not found: ${fileName}.js`, event.threadID, event.messageID);
+    }
 
-// Route principale (test rapide)
-app.get('/', (req, res) => {
-  res.send('Bot script server is running.');
-});
-
-// Route pour lire un fichier JS
-app.get('/file', (req, res) => {
-  const senderID = req.query.senderID;
-  const fileName = req.query.name;
-
-  if (senderID !== OWNER_ID) {
-    return res.status(403).send("❌ Accès refusé, tu n'es pas 🍁SAÏD🍁 ಠ⁠_⁠ಠ");
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    api.sendMessage({ body: fileContent }, event.threadID);
   }
-
-  if (!fileName) {
-    return res.status(400).send("⚠️ Le nom du fichier est requis.");
   }
-
-  const filePath = path.join(__dirname, `${fileName}.js`);
-
-  if (!fs.existsSync(filePath)) {
-    return res.status(404).send(`❌ Fichier introuvable : ${fileName}.js`);
-  }
-
-  const content = fs.readFileSync(filePath, 'utf8');
-  res.setHeader('Content-Type', 'text/plain');
-  res.send(content);
-});
-
-// Lancement du serveur
-app.listen(PORT, () => {
-  console.log(`✅ Serveur démarré sur le port ${PORT}`);
-});
